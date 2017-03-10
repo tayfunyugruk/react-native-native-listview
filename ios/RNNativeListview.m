@@ -39,6 +39,8 @@
 - (instancetype)initWithBridge:(RCTBridge *)bridge {
   RCTAssertParam(bridge);
 
+  NSLog(@"initWithBridge");
+  
   if ((self = [super initWithFrame:CGRectZero])) {
     _eventDispatcher = bridge.eventDispatcher;
 
@@ -67,7 +69,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 {
   // will not insert because we don't need to draw them
   //   [super insertSubview:subview atIndex:atIndex];
-
+  NSLog(@"insertReactSubview");
   [_unusedCells addObject:subview];
 }
 
@@ -76,6 +78,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 }
 
 - (void)createTableView {
+  NSLog(@"createTableView");
   _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
   _tableView.dataSource = self;
   _tableView.delegate = self;
@@ -96,10 +99,12 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 
 - (NSInteger)tableView:(UITableView *)theTableView numberOfRowsInSection:(NSInteger)section
 {
+  NSLog(@"numberOfRowsInSection");
   return self.numRows;
 }
 
 - (UIView*) getUnusedCell {
+  NSLog(@"getUnusedCell");
   UIView* res = [_unusedCells lastObject];
   [_unusedCells removeLastObject];
   if (res != nil) {
@@ -141,6 +146,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  NSLog(@"willDisplayCell");
   [[cell contentView] setBackgroundColor:[UIColor clearColor]];
   cell.backgroundColor = [UIColor clearColor];
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
