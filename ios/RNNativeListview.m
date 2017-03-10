@@ -116,7 +116,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 {
   static NSString *cellIdentifier = @"CustomCell";
 
-  printf("cellForRowAtIndexPath");
+  NSLog(@"cellForRowAtIndexPath");
 
   TableViewCell *cell = (TableViewCell *)[theTableView dequeueReusableCellWithIdentifier:cellIdentifier];
   if (cell == nil) {
