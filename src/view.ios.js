@@ -10,7 +10,6 @@ class NativeListview extends Component {
         const binding = [];
         for (let i = 0; i < 100; i++) binding.push(-1);
         this.state = {binding};
-        console.log("NativeListview constructor RNTableViewChildren ->", RNTableViewChildren);
     }
 
     render() {
@@ -41,7 +40,6 @@ class NativeListview extends Component {
     }
 
     onBind(event) {
-        console.log("NativeListview onBind ->", event);
         const {childIndex, rowID} = event.nativeEvent;
         const binding = {...this.state.binding};
         binding[childIndex] = rowID;

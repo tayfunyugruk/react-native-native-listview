@@ -40,7 +40,7 @@
   RCTAssertParam(bridge);
 
   NSLog(@"initWithBridge");
-  
+
   if ((self = [super initWithFrame:CGRectZero])) {
     _eventDispatcher = bridge.eventDispatcher;
 
@@ -99,7 +99,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 
 - (NSInteger)tableView:(UITableView *)theTableView numberOfRowsInSection:(NSInteger)section
 {
-  NSLog(@"numberOfRowsInSection");
+  NSLog(@"numberOfRowsInSection %d", section);
   return self.numRows;
 }
 
