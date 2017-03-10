@@ -10,6 +10,7 @@ class NativeListview extends Component {
         const binding = [];
         for (let i = 0; i < 100; i++) binding.push(-1);
         this.state = {binding};
+        console.log("NativeListview constructor");
     }
 
     render() {

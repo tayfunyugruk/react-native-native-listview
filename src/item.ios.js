@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 class NativeListviewItem extends Component {
-    
+
     shouldComponentUpdate(nextProps) {
         return nextProps.rowId !== this.props.rowId;
     }
