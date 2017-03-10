@@ -152,4 +152,8 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"frame"];
+}
+
 @end
