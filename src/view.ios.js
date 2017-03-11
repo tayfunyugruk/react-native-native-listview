@@ -13,9 +13,12 @@ class NativeListview extends Component {
     }
 
     render() {
-        const {rowHeight, renderRow, componentHeight} = this.props;
-        const height = componentHeight ? componentHeight : Dimensions.get('window').height;
+        const {rowHeight, renderRow, parentHeight} = this.props;
+        const height = parentHeight ? parentHeight : Dimensions.get('window').height;
         const rowsToRender = Math.max(9, Math.round(height / rowHeight * 1.6));
+
+        console.log("NativeListview render height ->", height, " rowHeight ->", rowHeight, " rowsToRender ->", rowsToRender);
+
         let items = [];
         for (let i = 0; i < rowsToRender; i++) {
             items.push(
@@ -51,7 +54,8 @@ class NativeListview extends Component {
 NativeListview.propTypes = {
     numRows: React.PropTypes.number.isRequired,
     rowHeight: React.PropTypes.number.isRequired,
-    renderRow: React.PropTypes.func
+    renderRow: React.PropTypes.func,
+    parentHeight: React.PropTypes.number
 };
 
 export default NativeListview;
