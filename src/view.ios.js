@@ -21,13 +21,15 @@ class NativeListview extends Component {
 
         let items = [];
         for (let i = 0; i < rowsToRender; i++) {
-            items.push(
-                <NativeListviewItem
-                    rowId={this.state.binding[i]}
-                    renderRow={renderRow}
-                    key={'r_' + i}
-                />
-            );
+            if (this.state.binding[i]) {
+                items.push(
+                    <NativeListviewItem
+                        rowId={this.state.binding[i]}
+                        renderRow={renderRow}
+                        key={'r_' + i}
+                    />
+                );
+            }
         }
 
         return (
