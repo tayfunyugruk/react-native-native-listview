@@ -26,14 +26,9 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
         parent.addView(child);
     }
 
-    @ReactProp(name = "numRows")
-    public void setNumRows(NativeListviewView parent, int size) {
-
-    }
-
-    @ReactProp(name = "rowHeight")
-    public void setRowHeight(NativeListviewView parent, int val) {
-
+    @ReactProp(name = "setBulletin")
+    public void setBulletin(NativeListviewView parent, String bulletin) {
+        parent.setBulletin(bulletin);
     }
 
     @Override

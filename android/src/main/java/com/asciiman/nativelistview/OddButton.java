@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import static com.asciiman.nativelistview.CustomFontManager.DINNextFont;
-
 /**
  * Created by typhoon on 11/03/2017.
  */
@@ -60,7 +58,7 @@ public class OddButton extends LinearLayout {
 
     private TextView findTextView(View parentView, int id) {
         TextView tv = (TextView) parentView.findViewById(id);
-        tv.setTypeface(DINNextFont);
+        tv.setTypeface(CustomFontManager.DINNextFont);
         return tv;
     }
 }
