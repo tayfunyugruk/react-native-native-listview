@@ -13,8 +13,8 @@ class NativeListview extends Component {
     }
 
     render() {
-        const {rowHeight, renderRow} = this.props;
-        const height = Dimensions.get('window').height;
+        const {rowHeight, renderRow, componentHeight} = this.props;
+        const height = componentHeight ? componentHeight : Dimensions.get('window').height;
         const rowsToRender = Math.max(9, Math.round(height / rowHeight * 1.6));
         let items = [];
         for (let i = 0; i < rowsToRender; i++) {
