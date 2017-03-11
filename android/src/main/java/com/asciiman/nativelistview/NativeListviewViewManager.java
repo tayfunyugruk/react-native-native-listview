@@ -7,7 +7,7 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 
-public class NativeListviewViewManager extends ViewGroupManager<CustomRecyclerView> {
+public class NativeListviewViewManager extends ViewGroupManager<NativeListviewView> {
 
     @Override
     public String getName() {
@@ -15,34 +15,34 @@ public class NativeListviewViewManager extends ViewGroupManager<CustomRecyclerVi
     }
 
     @Override
-    protected CustomRecyclerView createViewInstance(ThemedReactContext reactContext) {
-        CustomRecyclerView view = new CustomRecyclerView(reactContext);
+    protected NativeListviewView createViewInstance(ThemedReactContext reactContext) {
+        NativeListviewView view = new NativeListviewView(reactContext);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return view;
     }
 
     @Override
-    public void addView(CustomRecyclerView parent, View child, int index) {
+    public void addView(NativeListviewView parent, View child, int index) {
         parent.addView(child);
     }
 
     @ReactProp(name = "numRows")
-    public void setNumRows(CustomRecyclerView parent, int size) {
+    public void setNumRows(NativeListviewView parent, int size) {
 
     }
 
     @ReactProp(name = "rowHeight")
-    public void setRowHeight(CustomRecyclerView parent, int val) {
+    public void setRowHeight(NativeListviewView parent, int val) {
 
     }
 
     @Override
-    public int getChildCount(CustomRecyclerView parent) {
+    public int getChildCount(NativeListviewView parent) {
         return parent.getChildCount();
     }
 
     @Override
-    public void removeAllViews(CustomRecyclerView parent) {
+    public void removeAllViews(NativeListviewView parent) {
 
     }
 }
