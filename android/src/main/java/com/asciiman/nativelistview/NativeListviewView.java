@@ -35,7 +35,7 @@ public class NativeListviewView extends RecyclerView {
             @Override
             public void onClick(View view, int position) {
                 Event event = eventList.get(position);
-                Toast.makeText(CustomRecyclerView.this.getContext(), event.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NativeListviewView.this.getContext(), event.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
