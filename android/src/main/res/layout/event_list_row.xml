@@ -96,7 +96,7 @@
 
             <view
                 android:id="@+id/oddButton1"
-                class="oley.tayfun.com.oleybulletintest.OddButton"
+                class="com.asciiman.nativelistview.OddButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
@@ -104,7 +104,7 @@
 
             <view
                 android:id="@+id/oddButtonX"
-                class="oley.tayfun.com.oleybulletintest.OddButton"
+                class="com.asciiman.nativelistview.OddButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
@@ -112,7 +112,7 @@
 
             <view
                 android:id="@+id/oddButton2"
-                class="oley.tayfun.com.oleybulletintest.OddButton"
+                class="com.asciiman.nativelistview.OddButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
