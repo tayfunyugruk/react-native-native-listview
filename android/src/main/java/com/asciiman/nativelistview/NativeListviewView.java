@@ -1,8 +1,13 @@
 package com.asciiman.nativelistview;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 /**
  * Created by typhoon on 11/03/2017.
