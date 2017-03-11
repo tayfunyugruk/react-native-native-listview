@@ -13,7 +13,7 @@ public class NativeListviewView extends RecyclerView {
     private List<Event> eventList = new ArrayList<>();
     private EventsAdapter mAdapter;
 
-    public CustomRecyclerView(Context context) {
+    public NativeListviewView(Context context) {
         super(context);
 
         mAdapter = new EventsAdapter(eventList);
