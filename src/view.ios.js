@@ -17,8 +17,6 @@ class NativeListview extends Component {
         const height = parentHeight ? parentHeight : Dimensions.get('window').height;
         const rowsToRender = Math.max(9, Math.round(height / rowHeight * 1.6));
 
-        console.log("NativeListview render parentHeight ->", parentHeight, " rowHeight ->", rowHeight, " rowsToRender ->", rowsToRender);
-
         let items = [];
         for (let i = 0; i < rowsToRender; i++) {
             if (this.state.binding[i]) {
@@ -45,7 +43,6 @@ class NativeListview extends Component {
     }
 
     onBind(event) {
-        console.log("NativeListview onBind ->", event.nativeEvent);
         const {childIndex, rowID} = event.nativeEvent;
         const binding = {...this.state.binding};
         binding[childIndex] = rowID;

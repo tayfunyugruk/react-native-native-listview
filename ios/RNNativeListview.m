@@ -39,8 +39,6 @@
 - (instancetype)initWithBridge:(RCTBridge *)bridge {
   RCTAssertParam(bridge);
 
-  NSLog(@"initWithBridge");
-
   if ((self = [super initWithFrame:CGRectZero])) {
     _eventDispatcher = bridge.eventDispatcher;
 
@@ -69,7 +67,6 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 {
   // will not insert because we don't need to draw them
   //   [super insertSubview:subview atIndex:atIndex];
-  NSLog(@"insertReactSubview");
   [_unusedCells addObject:subview];
 }
 
@@ -99,12 +96,10 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 
 - (NSInteger)tableView:(UITableView *)theTableView numberOfRowsInSection:(NSInteger)section
 {
-  NSLog(@"numberOfRowsInSection %d", section);
   return self.numRows;
 }
 
 - (UIView*) getUnusedCell {
-  NSLog(@"getUnusedCell");
   UIView* res = [_unusedCells lastObject];
   [_unusedCells removeLastObject];
   if (res != nil) {
@@ -121,8 +116,6 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 {
   static NSString *cellIdentifier = @"CustomCell";
 
-  NSLog(@"cellForRowAtIndexPath");
-
   TableViewCell *cell = (TableViewCell *)[theTableView dequeueReusableCellWithIdentifier:cellIdentifier];
   if (cell == nil) {
     cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -132,27 +125,24 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     NSLog(@"Recycled childIndex %d for row %d", (int)cell.cellView.tag, (int)indexPath.row);
   }
 
-  NSLog(@"cellForRowAtIndexPath calling JS");
   NSDictionary *event = @{
                           @"target": cell.cellView.reactTag,
                           @"childIndex": @(cell.cellView.tag),
                           @"rowID": @(indexPath.row),
                           @"sectionID": @(indexPath.section),
                         };
-  NSLog(@"cellForRowAtIndexPath calling JS event created");
+
   [_eventDispatcher sendInputEventWithName:@"onChange" body:event];
-  NSLog(@"cellForRowAtIndexPath calling JS completed");
+
   return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSLog(@"willDisplayCell");
   [[cell contentView] setBackgroundColor:[UIColor clearColor]];
   cell.backgroundColor = [UIColor clearColor];
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
-
 
 - (void)dealloc {
      [self removeObserver:self forKeyPath:@"self.numRows"];
