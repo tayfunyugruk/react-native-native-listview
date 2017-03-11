@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import static oley.tayfun.com.oleybulletintest.MainActivity.DINNextFont;
+import static com.asciiman.nativelistview.CustomFontManager.DINNextFont;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHolder> {
 
