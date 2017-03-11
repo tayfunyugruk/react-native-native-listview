@@ -18,7 +18,7 @@ class NativeListview extends Component {
 }
 
 NativeListview.propTypes = {
-    eventList: React.PropTypes.string.isRequired
+    setBulletin: React.PropTypes.string.isRequired
 };
 
 export default NativeListview;
