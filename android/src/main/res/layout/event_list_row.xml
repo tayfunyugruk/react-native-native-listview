@@ -135,8 +135,7 @@
                 android:id="@+id/imageButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/imageButton"
-                app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+                android:layout_alignEnd="@+id/imageButton" />
 
             <ImageButton
                 android:id="@+id/imageButton"
@@ -144,8 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="12dp"
-                app:srcCompat="@android:drawable/arrow_down_float" />
+                android:layout_marginBottom="12dp" />
         </RelativeLayout>
 
     </LinearLayout>
