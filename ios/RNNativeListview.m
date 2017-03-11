@@ -132,15 +132,16 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     NSLog(@"Recycled childIndex %d for row %d", (int)cell.cellView.tag, (int)indexPath.row);
   }
 
+  NSLog(@"cellForRowAtIndexPath calling JS");
   NSDictionary *event = @{
                           @"target": cell.cellView.reactTag,
                           @"childIndex": @(cell.cellView.tag),
                           @"rowID": @(indexPath.row),
                           @"sectionID": @(indexPath.section),
                         };
-
+  NSLog(@"cellForRowAtIndexPath calling JS event created");
   [_eventDispatcher sendInputEventWithName:@"onChange" body:event];
-
+  NSLog(@"cellForRowAtIndexPath calling JS completed");
   return cell;
 }
 
@@ -152,8 +153,9 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
+
 - (void)dealloc {
-    [self removeObserver:self forKeyPath:@"frame"];
+     [self removeObserver:self forKeyPath:@"self.numRows"];
 }
 
 @end

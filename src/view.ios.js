@@ -40,6 +40,7 @@ class NativeListview extends Component {
     }
 
     onBind(event) {
+        console.log("NativeListview onBind ->", event.nativeEvent);
         const {childIndex, rowID} = event.nativeEvent;
         const binding = {...this.state.binding};
         binding[childIndex] = rowID;
