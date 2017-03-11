@@ -23,6 +23,9 @@ public class RNNativeListviewPackage implements ReactPackage {
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+
+      CustomFontManager.initialize(reactContext);
+
       return Arrays.<ViewManager>asList(
               new NativeListviewViewManager(),
               new NativeListviewItemViewManager()

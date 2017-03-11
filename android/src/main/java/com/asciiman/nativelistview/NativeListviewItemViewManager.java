@@ -10,6 +10,7 @@ import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 
 public class NativeListviewItemViewManager extends ViewGroupManager<NativeListviewItemView> {
+
     @Override
     public NativeListviewItemView createViewInstance(ThemedReactContext context) {
         return new NativeListviewItemView(context);

@@ -12,13 +12,14 @@ import com.facebook.react.uimanager.events.EventDispatcher;
 
 public class MyUIImplementation extends UIImplementation {
     public MyUIImplementation(ReactApplicationContext reactContext, List<ViewManager> viewManagers, EventDispatcher eventDispatcher) {
-        this(reactContext, new ViewManagerRegistry(viewManagers),eventDispatcher);
+        this(reactContext, new ViewManagerRegistry(viewManagers), eventDispatcher);
     }
 
     private MyUIImplementation(ReactApplicationContext reactContext, ViewManagerRegistry viewManagers, EventDispatcher eventDispatcher) {
-        this(reactContext,viewManagers, null,eventDispatcher);
+        this(reactContext, viewManagers, null, eventDispatcher);
     }
+
     protected MyUIImplementation(ReactApplicationContext reactContext, ViewManagerRegistry viewManagers, UIViewOperationQueue operationsQueue, EventDispatcher eventDispatcher) {
-        super(reactContext, viewManagers, new MyUIViewOperationQueue(reactContext, new NativeViewHierarchyManager(viewManagers)),eventDispatcher);
+        super(reactContext, viewManagers, new MyUIViewOperationQueue(reactContext, new NativeViewHierarchyManager(viewManagers)), eventDispatcher);
     }
 }

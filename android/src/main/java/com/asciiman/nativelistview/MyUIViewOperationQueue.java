@@ -7,6 +7,7 @@ import com.facebook.react.uimanager.NativeViewHierarchyManager;
 import com.facebook.react.uimanager.UIViewOperationQueue;
 
 public class MyUIViewOperationQueue extends UIViewOperationQueue {
+
     private final NativeViewHierarchyManager mNativeViewHierarchyManager;
 
     public MyUIViewOperationQueue(ReactApplicationContext reactContext, NativeViewHierarchyManager nativeViewHierarchyManager) {
