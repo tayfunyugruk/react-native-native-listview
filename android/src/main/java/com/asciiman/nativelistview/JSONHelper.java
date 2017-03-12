@@ -1,4 +1,4 @@
-package oley.tayfun.com.oleybulletintest;
+package com.asciiman.nativelistview;
 
 import org.json.JSONArray;
 import org.json.JSONException;

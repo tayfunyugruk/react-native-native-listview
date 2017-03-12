@@ -1,4 +1,4 @@
-package oley.tayfun.com.oleybulletintest;
+package com.asciiman.nativelistview;
 
 import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -19,6 +19,7 @@ public class NativeListviewView extends RecyclerView implements RecycleViewItemL
 
     private EventsAdapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
+    private RecycleViewItemListener parentRecycleViewItemListener;
 
     public NativeListviewView(Context context) {
         super(context);
@@ -62,9 +63,14 @@ public class NativeListviewView extends RecyclerView implements RecycleViewItemL
         }
     }
 
+    public void setParentRecycleViewItemListener(RecycleViewItemListener parentRecycleViewItemListener) {
+        this.parentRecycleViewItemListener = parentRecycleViewItemListener;
+    }
+
     @Override
     public void itemClicked(View view, int clickedView, Object itemData) {
         JSONObject jsonObject = (JSONObject) itemData;
-        Toast.makeText(NativeListviewView.this.getContext(), clickedView + " clicked for " + JSONHelper.getString(jsonObject, "homeTeam") + " event is selected!", Toast.LENGTH_SHORT).show();
+        this.parentRecycleViewItemListener.itemClicked(null, clickedView, jsonObject);
+        //Toast.makeText(NativeListviewView.this.getContext(), clickedView + " clicked for " + JSONHelper.getString(jsonObject, "homeTeam") + " event is selected!", Toast.LENGTH_SHORT).show();
     }
 }

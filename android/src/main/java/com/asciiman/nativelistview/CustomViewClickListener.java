@@ -1,4 +1,4 @@
-package oley.tayfun.com.oleybulletintest;
+package com.asciiman.nativelistview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

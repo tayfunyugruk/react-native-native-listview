@@ -1,4 +1,4 @@
-package oley.tayfun.com.oleybulletintest;
+package com.asciiman.nativelistview;
 
 /**
  * Created by typhoon on 12/03/2017.
