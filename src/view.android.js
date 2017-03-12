@@ -9,7 +9,7 @@ class NativeListview extends Component {
     }
 
     componentWillMount() {
-        DeviceEventEmitter.addListener('itemClicked', function (e) {
+        DeviceEventEmitter.addListener('itemClicked', (e) => {
             if (this.props.onItemClicked) {
                 this.props.onItemClicked(e);
             }
