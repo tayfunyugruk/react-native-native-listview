@@ -64,6 +64,7 @@ public class NativeListviewView extends RecyclerView {
             JSONArray selectedOddList = new JSONArray(selectedOddListString);
             mAdapter.setSelectedOddList(selectedOddList);
             mAdapter.notifyDataSetChanged();
+            requestLayout();
         } catch (JSONException e) {
             e.printStackTrace();
         }
