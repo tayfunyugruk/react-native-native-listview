@@ -8,7 +8,7 @@ import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.bridge.ReactMethod;
 
-public class NativeListviewViewManager extends ViewGroupManager<NativeListviewView> {
+public class NativeListviewViewManager extends ViewGroupManager<NativeListviewView> implements RecycleViewItemListener {
 
     @Override
     public String getName() {
@@ -20,6 +20,7 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
         NativeListviewView view = new NativeListviewView(reactContext);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         view.setPadding(5, 5, 5, 5);
+        view.setParentRecycleViewItemListener(this);
         return view;
     }
 
@@ -46,5 +47,20 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
     @Override
     public void removeAllViews(NativeListviewView parent) {
         parent.removeAllViews();
+    }
+
+    private void sendEvent(ReactContext reactContext,
+                           String eventName,
+                           @Nullable WritableMap params) {
+      reactContext
+          .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+          .emit(eventName, params);
+    }
+
+    @Override
+    public void itemClicked(View view, int clickedView, Object itemData) {
+        WritableMap params = Arguments.createMap();
+        params.set("viewId", clickedView);
+        sendEvent(reactContext, "itemClicked", params);
     }
 }
