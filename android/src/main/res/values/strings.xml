@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">OleyBulletinTest</string>
+    <string name="fa_icon_piechart">&#xf200;</string>
+    <string name="fa_chevron_down">&#xf078;</string>
 </resources>

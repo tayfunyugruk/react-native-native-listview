@@ -1,4 +1,4 @@
-package com.asciiman.nativelistview;
+package oley.tayfun.com.oleybulletintest;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,20 +9,29 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHolder> {
+public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHolder> implements RecycleViewItemListener {
 
     private JSONArray eventList;
     private JSONArray selectedOddList;
+    private RecycleViewItemListener clickListener;
+    private RecyclerView mRecyclerView;
+
+    @Override
+    public void itemClicked(View view, int clickedView, Object itemData) {
+        clickListener.itemClicked(view, clickedView, itemData);
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView matchCode, mbsText, shortLeagueText;
+        public TextView matchCode, shortLeagueText;
         public TextView homeTeamText, awayTeamText, detailText;
         public OddButton oddButton1, oddButtonX, oddButton2;
+        public MbsView mbsView;
+        public View detailButton;
 
         public MyViewHolder(View view) {
             super(view);
+
             matchCode = findTextView(view, R.id.matchCode);
-            mbsText = findTextView(view, R.id.mbsText);
             shortLeagueText = findTextView(view, R.id.shortLeagueText);
             homeTeamText = findTextView(view, R.id.homeTeamText);
             awayTeamText = findTextView(view, R.id.awayTeamText);
@@ -30,6 +39,13 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHold
             oddButton1 = (OddButton) view.findViewById(R.id.oddButton1);
             oddButtonX = (OddButton) view.findViewById(R.id.oddButtonX);
             oddButton2 = (OddButton) view.findViewById(R.id.oddButton2);
+            mbsView = (MbsView) view.findViewById(R.id.mbsView);
+            detailButton = view.findViewById(R.id.detailButton);
+
+            oddButton1.setOnClickListener(new CustomViewClickListener(EventsAdapter.this.mRecyclerView, EventsAdapter.this.eventList, 1, EventsAdapter.this));
+            oddButtonX.setOnClickListener(new CustomViewClickListener(EventsAdapter.this.mRecyclerView, EventsAdapter.this.eventList, 2, EventsAdapter.this));
+            oddButton2.setOnClickListener(new CustomViewClickListener(EventsAdapter.this.mRecyclerView, EventsAdapter.this.eventList, 3, EventsAdapter.this));
+            detailButton.setOnClickListener(new CustomViewClickListener(EventsAdapter.this.mRecyclerView, EventsAdapter.this.eventList, 4, EventsAdapter.this));
         }
     }
 
@@ -39,7 +55,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHold
         return tv;
     }
 
-    public EventsAdapter() {
+    public EventsAdapter(RecyclerView mRecyclerView) {
+        this.mRecyclerView = mRecyclerView;
     }
 
     public void setEventList(JSONArray eventList) {
@@ -65,7 +82,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         JSONObject event = JSONHelper.getObjectAt(eventList, position);
         holder.matchCode.setText(JSONHelper.getString(event, "matchCode"));
-        holder.mbsText.setText(JSONHelper.getString(event, "mbs"));
+        holder.mbsView.setMbs(JSONHelper.getInt(event, "mbs"));
         holder.shortLeagueText.setText(JSONHelper.getString(event, "tournamentName"));
         holder.homeTeamText.setText(JSONHelper.getString(event, "homeTeam").toUpperCase());
         holder.awayTeamText.setText(JSONHelper.getString(event, "awayTeam").toUpperCase());
@@ -95,6 +112,10 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHold
                 }
             }
         }
+    }
+
+    public void setRecycleViewItemListener(RecycleViewItemListener listener) {
+        this.clickListener = listener;
     }
 
     @Override

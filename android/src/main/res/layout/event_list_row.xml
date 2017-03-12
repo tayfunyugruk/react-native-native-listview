@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="110dp"
     android:layout_marginBottom="5dp"
@@ -15,6 +14,7 @@
         android:background="@drawable/container_left"
         android:orientation="vertical"
         android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:paddingTop="5dp">
 
         <LinearLayout
@@ -39,12 +39,14 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/mbsText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <view
+                    android:id="@+id/mbsView"
+                    class="oley.tayfun.com.oleybulletintest.MbsView"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="0"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/shortLeagueText"
@@ -96,7 +98,7 @@
 
             <view
                 android:id="@+id/oddButton1"
-                class="com.asciiman.nativelistview.OddButton"
+                class="oley.tayfun.com.oleybulletintest.OddButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
@@ -104,7 +106,7 @@
 
             <view
                 android:id="@+id/oddButtonX"
-                class="com.asciiman.nativelistview.OddButton"
+                class="oley.tayfun.com.oleybulletintest.OddButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
@@ -112,7 +114,7 @@
 
             <view
                 android:id="@+id/oddButton2"
-                class="com.asciiman.nativelistview.OddButton"
+                class="oley.tayfun.com.oleybulletintest.OddButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
@@ -131,19 +133,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/imageButton" />
+            <view
+                android:id="@+id/detailButton"
+                class="oley.tayfun.com.oleybulletintest.FontAwesomeIcon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignEnd="@+id/statisticsButton"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="12dp"
+                android:text="@string/fa_chevron_down"
+                android:textColor="#3c597e"
+                android:textSize="30sp" />
 
             <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:id="@+id/statisticsButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="12dp" />
+                android:background="#DDD"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:src="@drawable/icon_statistics" />
+
         </RelativeLayout>
 
     </LinearLayout>

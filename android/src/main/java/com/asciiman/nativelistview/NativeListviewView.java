@@ -1,4 +1,4 @@
-package com.asciiman.nativelistview;
+package oley.tayfun.com.oleybulletintest;
 
 import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
  * Created by typhoon on 11/03/2017.
  */
 
-public class NativeListviewView extends RecyclerView {
+public class NativeListviewView extends RecyclerView implements RecycleViewItemListener {
 
     private EventsAdapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
@@ -25,27 +25,14 @@ public class NativeListviewView extends RecyclerView {
 
         CustomFontManager.initialize(context);
 
-        mAdapter = new EventsAdapter();
+        mAdapter = new EventsAdapter(this);
+        mAdapter.setRecycleViewItemListener(this);
 
         this.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this.getContext());
         this.setLayoutManager(mLayoutManager);
         this.setItemAnimator(new DefaultItemAnimator());
         this.setAdapter(mAdapter);
-
-        this.addOnItemTouchListener(new RecyclerTouchListener(this.getContext(), this, new ClickListener() {
-
-            @Override
-            public void onClick(View view, int position) {
-                JSONObject event = JSONHelper.getObjectAt(mAdapter.getEventList(), position);
-                Toast.makeText(NativeListviewView.this.getContext(), JSONHelper.getString(event, "homeTeam") + " is selected!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
     }
 
     public void setBulletin(String bulletin) {
@@ -74,5 +61,10 @@ public class NativeListviewView extends RecyclerView {
             e.printStackTrace();
         }
     }
-}
 
+    @Override
+    public void itemClicked(View view, int clickedView, Object itemData) {
+        JSONObject jsonObject = (JSONObject) itemData;
+        Toast.makeText(NativeListviewView.this.getContext(), clickedView + " clicked for " + JSONHelper.getString(jsonObject, "homeTeam") + " event is selected!", Toast.LENGTH_SHORT).show();
+    }
+}
