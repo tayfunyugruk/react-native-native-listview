@@ -4,9 +4,15 @@ const RNNativeListviewView = requireNativeComponent('NativeListviewView', null);
 
 class NativeListview extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     componentWillMount() {
         DeviceEventEmitter.addListener('itemClicked', function (e) {
-            console.log("itemClicked e ->", e);
+            if (this.props.onItemClicked) {
+                this.props.onItemClicked(e);
+            }
         });
     }
 
