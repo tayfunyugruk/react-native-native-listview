@@ -31,6 +31,11 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
         parent.setBulletin(bulletin);
     }
 
+    @ReactMethod
+    public void setSelectedOddList(String selectedOddList) {
+        parent.setSelectedOddList(selectedOddList);
+    }
+
     @Override
     public int getChildCount(NativeListviewView parent) {
         return parent.getChildCount();

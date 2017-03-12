@@ -58,4 +58,14 @@ public class NativeListviewView extends RecyclerView {
             e.printStackTrace();
         }
     }
+
+    public void setSelectedOddList(String selectedOddListString) {
+        try {
+            JSONArray selectedOddList = new JSONArray(selectedOddListString);
+            mAdapter.setSelectedOddList(selectedOddList);
+            mAdapter.notifyDataSetChanged();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }

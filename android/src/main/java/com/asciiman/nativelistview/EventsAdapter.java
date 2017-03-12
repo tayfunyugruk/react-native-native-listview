@@ -12,6 +12,7 @@ import org.json.JSONObject;
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHolder> {
 
     private JSONArray eventList;
+    private JSONArray selectedOddList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView matchCode, mbsText, shortLeagueText;
@@ -49,6 +50,10 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHold
         return this.eventList;
     }
 
+    public void setSelectedOddList(JSONArray selectedOddList) {
+        this.selectedOddList = selectedOddList;
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -69,7 +74,27 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHold
         holder.oddButtonX.setValues("X", "1.50", "Berabere");
         holder.oddButton2.setValues("2", "1.50", JSONHelper.getString(event, "awayTeam"));
         //
-        holder.oddButton1.setSelected(true);
+        showSelectedOdds(holder, event);
+    }
+
+    public void showSelectedOdds(MyViewHolder holder, JSONObject event) {
+        if (selectedOddList != null) {
+            for (int i = 0; i < selectedOddList.length(); i++) {
+                JSONObject selectedOdd = JSONHelper.getObjectAt(selectedOddList, i);
+                String matchCode = JSONHelper.getString(selectedOdd, "matchCode");
+                if (matchCode.equals(JSONHelper.getString(event, "matchCode"))) {
+                    // show selected odds..
+                    String selection = JSONHelper.getString(selectedOdd, "selection");
+                    if ("F.1".equals(selection)) {
+                        holder.oddButton1.setSelected(true);
+                    } else if ("F.X".equals(selection)) {
+                        holder.oddButtonX.setSelected(true);
+                    } else {
+                        holder.oddButton2.setSelected(true);
+                    }
+                }
+            }
+        }
     }
 
     @Override

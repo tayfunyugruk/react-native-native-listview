@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import {requireNativeComponent, Dimensions} from 'react-native';
-import NativeListviewItem from './item';
 const RNNativeListviewView = requireNativeComponent('NativeListviewView', null);
 
 class NativeListview extends Component {
 
     componentWillUnmount() {
-
     }
 
     render() {
