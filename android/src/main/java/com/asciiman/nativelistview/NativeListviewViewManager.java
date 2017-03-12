@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.facebook.react.uimanager.annotations.ReactMethod;
 
 public class NativeListviewViewManager extends ViewGroupManager<NativeListviewView> {
 
@@ -32,7 +33,7 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
     }
 
     @ReactMethod
-    public void setSelectedOddList(String selectedOddList) {
+    public void setSelectedOddList(NativeListviewView parent, String selectedOddList) {
         parent.setSelectedOddList(selectedOddList);
     }
 
