@@ -4,11 +4,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.facebook.react.uimanager.ThemedReactContext;
+import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableMap;
 
 public class NativeListviewViewManager extends ViewGroupManager<NativeListviewView> implements RecycleViewItemListener {
+
+    private ReactContext reactContext;
 
     @Override
     public String getName() {
@@ -17,6 +21,7 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
 
     @Override
     protected NativeListviewView createViewInstance(ThemedReactContext reactContext) {
+        this.reactContext = reactContext;
         NativeListviewView view = new NativeListviewView(reactContext);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         view.setPadding(5, 5, 5, 5);
@@ -61,6 +66,6 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
     public void itemClicked(View view, int clickedView, Object itemData) {
         WritableMap params = Arguments.createMap();
         params.set("viewId", clickedView);
-        sendEvent(reactContext, "itemClicked", params);
+        sendEvent(this.reactContext, "itemClicked", params);
     }
 }
