@@ -14,7 +14,7 @@ class NativeListview extends Component {
 
 NativeListview.propTypes = {
     setBulletin: React.PropTypes.string.isRequired,
-    setSelectedOddList : React.PropTypes.string.isRequired
+    setSelectedOddList: React.PropTypes.string.isRequired
 };
 
 export default NativeListview;

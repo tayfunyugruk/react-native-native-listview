@@ -19,6 +19,7 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
     protected NativeListviewView createViewInstance(ThemedReactContext reactContext) {
         NativeListviewView view = new NativeListviewView(reactContext);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        view.setPadding(5, 5, 5, 5);
         return view;
     }
 
@@ -44,6 +45,6 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
 
     @Override
     public void removeAllViews(NativeListviewView parent) {
-
+        parent.removeAllViews();
     }
 }
