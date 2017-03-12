@@ -95,6 +95,9 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.MyViewHold
     }
 
     public void showSelectedOdds(MyViewHolder holder, JSONObject event) {
+        holder.oddButton1.setSelected(false);
+        holder.oddButtonX.setSelected(false);
+        holder.oddButton2.setSelected(false);
         if (selectedOddList != null) {
             for (int i = 0; i < selectedOddList.length(); i++) {
                 JSONObject selectedOdd = JSONHelper.getObjectAt(selectedOddList, i);
