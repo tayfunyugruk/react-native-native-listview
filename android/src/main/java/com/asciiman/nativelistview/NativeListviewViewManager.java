@@ -73,7 +73,7 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
         JSONObject jsonObject = (JSONObject) itemData;
         WritableMap params = Arguments.createMap();
         params.putInt("viewId", clickedView);
-        params.putInt("matchCode", JSONHelper.getInt(jsonObject, "matchCode");
+        params.putInt("matchCode", JSONHelper.getInt(jsonObject, "matchCode"));
         sendEvent(this.reactContext, "itemClicked", params);
     }
 }
