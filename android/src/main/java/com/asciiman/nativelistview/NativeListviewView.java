@@ -18,6 +18,7 @@ import org.json.JSONObject;
 public class NativeListviewView extends RecyclerView {
 
     private EventsAdapter mAdapter;
+    RecyclerView.LayoutManager mLayoutManager;
 
     public NativeListviewView(Context context) {
         super(context);
@@ -27,7 +28,7 @@ public class NativeListviewView extends RecyclerView {
         mAdapter = new EventsAdapter();
 
         this.setHasFixedSize(true);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
+        mLayoutManager = new LinearLayoutManager(this.getContext());
         this.setLayoutManager(mLayoutManager);
         this.setItemAnimator(new DefaultItemAnimator());
         this.setAdapter(mAdapter);
@@ -63,10 +64,15 @@ public class NativeListviewView extends RecyclerView {
         try {
             JSONArray selectedOddList = new JSONArray(selectedOddListString);
             mAdapter.setSelectedOddList(selectedOddList);
+
+            this.setAdapter(null);
+            this.setLayoutManager(null);
+            this.setAdapter(mAdapter);
+            this.setLayoutManager(mLayoutManager);
             mAdapter.notifyDataSetChanged();
-            requestLayout();
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 }
+
