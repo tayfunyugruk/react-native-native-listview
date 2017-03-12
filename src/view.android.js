@@ -4,12 +4,11 @@ const RNNativeListviewView = requireNativeComponent('NativeListviewView', null);
 
 class NativeListview extends Component {
 
-    componentWillUnmount() {
-    }
+    nativeListViewRef;
 
     render() {
         return (
-            <RNNativeListviewView {...this.props}>
+            <RNNativeListviewView ref={(ref) => this.nativeListViewRef = ref} {...this.props}>
             </RNNativeListviewView>
         );
     }
