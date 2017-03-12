@@ -41,7 +41,7 @@
 
                 <view
                     android:id="@+id/mbsView"
-                    class="oley.tayfun.com.oleybulletintest.MbsView"
+                    class="com.asciiman.nativelistview.MbsView"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_weight="1"
@@ -98,7 +98,7 @@
 
             <view
                 android:id="@+id/oddButton1"
-                class="oley.tayfun.com.oleybulletintest.OddButton"
+                class="com.asciiman.nativelistview.OddButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
@@ -106,7 +106,7 @@
 
             <view
                 android:id="@+id/oddButtonX"
-                class="oley.tayfun.com.oleybulletintest.OddButton"
+                class="com.asciiman.nativelistview.OddButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
@@ -114,7 +114,7 @@
 
             <view
                 android:id="@+id/oddButton2"
-                class="oley.tayfun.com.oleybulletintest.OddButton"
+                class="com.asciiman.nativelistview.OddButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
@@ -135,7 +135,7 @@
 
             <view
                 android:id="@+id/detailButton"
-                class="oley.tayfun.com.oleybulletintest.FontAwesomeIcon"
+                class="com.asciiman.nativelistview.FontAwesomeIcon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_alignEnd="@+id/statisticsButton"
