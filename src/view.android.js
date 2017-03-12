@@ -4,18 +4,17 @@ const RNNativeListviewView = requireNativeComponent('NativeListviewView', null);
 
 class NativeListview extends Component {
 
-    nativeListViewRef;
-
     render() {
         return (
-            <RNNativeListviewView ref={(ref) => this.nativeListViewRef = ref} {...this.props}>
+            <RNNativeListviewView {...this.props}>
             </RNNativeListviewView>
         );
     }
 }
 
 NativeListview.propTypes = {
-    setBulletin: React.PropTypes.string.isRequired
+    setBulletin: React.PropTypes.string.isRequired,
+    setSelectedOddList : React.PropTypes.string.isRequired
 };
 
 export default NativeListview;

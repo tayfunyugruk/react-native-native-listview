@@ -32,7 +32,7 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
         parent.setBulletin(bulletin);
     }
 
-    @ReactMethod
+    @ReactProp(name = "setSelectedOddList")
     public void setSelectedOddList(NativeListviewView parent, String selectedOddList) {
         parent.setSelectedOddList(selectedOddList);
     }
