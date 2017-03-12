@@ -11,6 +11,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.Arguments;
+import android.support.annotation.Nullable;
 
 public class NativeListviewViewManager extends ViewGroupManager<NativeListviewView> implements RecycleViewItemListener {
 
@@ -67,7 +68,7 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
     @Override
     public void itemClicked(View view, int clickedView, Object itemData) {
         WritableMap params = Arguments.createMap();
-        params.set("viewId", clickedView);
+        params.putInt("viewId", clickedView);
         sendEvent(this.reactContext, "itemClicked", params);
     }
 }
