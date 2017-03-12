@@ -12,6 +12,9 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.Arguments;
 import android.support.annotation.Nullable;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class NativeListviewViewManager extends ViewGroupManager<NativeListviewView> implements RecycleViewItemListener {
 
@@ -67,8 +70,10 @@ public class NativeListviewViewManager extends ViewGroupManager<NativeListviewVi
 
     @Override
     public void itemClicked(View view, int clickedView, Object itemData) {
+        JSONObject jsonObject = (JSONObject) itemData;
         WritableMap params = Arguments.createMap();
         params.putInt("viewId", clickedView);
+        params.putInt("matchCode", JSONHelper.getInt(jsonObject, "matchCode");
         sendEvent(this.reactContext, "itemClicked", params);
     }
 }
