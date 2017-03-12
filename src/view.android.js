@@ -25,6 +25,7 @@ class NativeListview extends Component {
 }
 
 NativeListview.propTypes = {
+    onItemClicked: React.PropTypes.func,
     setBulletin: React.PropTypes.string.isRequired,
     setSelectedOddList: React.PropTypes.string.isRequired
 };
